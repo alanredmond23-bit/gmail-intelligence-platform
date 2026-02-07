@@ -1,0 +1,146 @@
+# Gmail Intelligence Platform - Configuration File
+# Copy to ~/.gmail-intelligence/config.yaml and customize
+
+gmail:
+  # Gmail API credentials (obtained via OAuth2)
+  credentials_file: ~/.gmail-intelligence/credentials.json
+
+  # Cached token (auto-generated after first authentication)
+  tokens_file: ~/.gmail-intelligence/token.json
+
+  # API scopes requested (read-only by default)
+  scopes:
+    - https://www.googleapis.com/auth/gmail.readonly
+    - https://www.googleapis.com/auth/gmail.labels
+
+  # Batch size for API requests
+  batch_size: 50
+
+  # Request timeout in seconds
+  timeout: 30
+
+storage:
+  # SQLite database location
+  database: ~/.gmail-intelligence/emails.db
+
+  # Database backup directory
+  backup_dir: ~/.gmail-intelligence/backups
+
+  # Local email storage
+  email_storage: ~/.gmail-intelligence/emails
+
+  # Backup interval (hours)
+  backup_interval: 24
+
+search:
+  # Semantic search engine
+  semantic_engine: openai
+
+  # Model for embeddings
+  embedding_model: text-embedding-3-small
+
+  # Batch size for semantic search
+  batch_size: 50
+
+  # Request timeout
+  timeout_seconds: 300
+
+  # Enable fuzzy matching
+  fuzzy_matching: true
+
+  # Fuzzy match threshold (0-1)
+  fuzzy_threshold: 0.8
+
+analysis:
+  # Sentiment analysis enabled
+  sentiment_analysis: true
+
+  # Entity extraction enabled
+  entity_extraction: true
+
+  # Privilege detection enabled
+  privilege_detection: true
+
+  # Classification enabled
+  classification: true
+
+sync:
+  # Enable automatic syncing
+  enabled: true
+
+  # Sync interval (minutes)
+  interval: 30
+
+  # Start hour (24-hour format)
+  start_hour: 6
+
+  # End hour (24-hour format)
+  end_hour: 22
+
+  # Max retries on failure
+  max_retries: 3
+
+  # Backoff multiplier
+  backoff_multiplier: 2
+
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: INFO
+
+  # Log file location
+  file: ~/.gmail-intelligence/gmail-intelligence.log
+
+  # Log format
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+  # Max log file size (MB)
+  max_size: 50
+
+  # Number of backup log files
+  backup_count: 5
+
+features:
+  # Enable graphical user interface
+  gui_enabled: false
+
+  # Enable MCP server for Claude integration
+  mcp_enabled: false
+
+  # Enable real-time sync
+  incremental_sync: true
+
+  # Enable error recovery
+  error_recovery: true
+
+openai:
+  # API key (load from env or secrets)
+  api_key: ${OPENAI_API_KEY}
+
+  # Model for analysis
+  model: gpt-4-mini
+
+  # Embedding model
+  embedding_model: text-embedding-3-small
+
+  # Max tokens per request
+  max_tokens: 2000
+
+  # Temperature (0-2)
+  temperature: 0.7
+
+# Advanced options
+advanced:
+  # Enable strict privilege detection
+  strict_privilege_mode: false
+
+  # Cache embeddings
+  cache_embeddings: true
+
+  # Cache TTL (hours)
+  cache_ttl: 24
+
+  # Use connection pooling
+  connection_pooling: true
+
+  # Pool size
+  pool_size: 5
