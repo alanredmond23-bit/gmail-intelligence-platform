@@ -20,16 +20,17 @@ gmail:
   timeout: 30
 
 storage:
-  # SQLite database location
-  database: ~/.gmail-intelligence/emails.db
+  # Supabase PostgreSQL Configuration
+  supabase_url: https://fifybuzwfaegloijrmqb.supabase.co
+  supabase_key: ${SUPABASE_KEY}
 
-  # Database backup directory
-  backup_dir: ~/.gmail-intelligence/backups
+  # Local email/attachment storage (S3 mount available at ~/Supabase-S3)
+  email_storage: ~/Supabase-S3/emails
 
-  # Local email storage
-  email_storage: ~/.gmail-intelligence/emails
+  # Attachment storage location
+  attachment_storage: ~/Supabase-S3/attachments
 
-  # Backup interval (hours)
+  # Backup interval (hours) - Supabase handles automated daily backups
   backup_interval: 24
 
 search:
